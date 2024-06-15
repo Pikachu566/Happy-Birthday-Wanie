@@ -12,36 +12,47 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: black;
+            background: #4682B4; /* Biru Laut */
             font-family: 'Arial', sans-serif;
             overflow: hidden;
             position: relative;
             text-align: center;
-            color: #FF69B4;
+            color: #FFD700; /* Warna Emas */
         }
-        #bgVideo {
+        #bgImage {
             position: fixed;
             top: 0;
             left: 0;
-            min-width: 100%;
-            min-height: 100%;
+            width: 100%;
+            height: 100%;
+            background-image: url('HB.jpg');
+            background-size: cover;
+            background-position: center;
             z-index: -1;
         }
         #date {
             font-size: 2em;
             color: yellow;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000000; /* Hitam */
+            margin-bottom: 30px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5); /* Kotak semi-transparan hitam */
+            border-radius: 10px;
         }
         .container {
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px #000000; /* Hitam */
             margin-bottom: 20px; /* Tambahkan margin di antara setiap kontainer */
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2); /* Kotak semi-transparan hitam */
+            border-radius: 10px;
+            display: inline-block;
         }
         .balloon {
             display: inline-block;
             animation: float 3s ease-in-out infinite;
-            color: #FFD700;
+            color: #FF69B4; /* Hot Pink */
+            font-size: 1.2em; /* Besarkan ukuran font untuk elemen "balloon" */
         }
         .balloon:hover {
             animation-play-state: paused;
@@ -57,17 +68,22 @@
         #typed {
             font-size: 1.5em;
             font-weight: bold;
-            color: #FFD700;
+            color: #FF69B4; /* Hot Pink */
             margin-top: 20px;
+            text-shadow: 2px 2px 4px #000000; /* Hitam */
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5); /* Kotak semi-transparan hitam */
+            border-radius: 10px;
+            display: inline-block;
         }
         /* Media query untuk ukuran desktop */
         @media only screen and (min-width: 768px) {
             .container {
-                font-size: 4em; /* Mengurangi ukuran font untuk desktop */
+                font-size: 2.5em; /* Kecilkan ukuran font untuk desktop */
                 margin-bottom: 30px; /* Menyesuaikan margin untuk desktop */
             }
             #typed {
-                font-size: 1.5em; /* Mengurangi ukuran font untuk desktop */
+                font-size: 1.2em; /* Kecilkan ukuran font untuk desktop */
             }
         }
         /* Media query untuk ukuran mobile */
@@ -87,9 +103,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
-    <video id="bgVideo" autoplay muted loop playsinline>
-        <source src="kembangapi.mp4" type="video/mp4">
-    </video>
+    <div id="bgImage"></div>
     <div id="date">🎉26/12/2024🎉</div>
     <div class="container">
         <span class="balloon">H</span>
