@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            color: #FF69B4;
+        }
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        #date {
+            font-size: 2em;
+            color: yellow;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .container {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px; /* Tambahkan margin di antara setiap kontainer */
+        }
+        .balloon {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            color: #FFD700;
+        }
+        .balloon:hover {
+            animation-play-state: paused;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+        #typed {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #FFD700;
+            margin-top: 20px;
+        }
+        /* Media query untuk ukuran desktop */
+        @media only screen and (min-width: 768px) {
+            .container {
+                font-size: 4em; /* Mengurangi ukuran font untuk desktop */
+                margin-bottom: 30px; /* Menyesuaikan margin untuk desktop */
+            }
+            #typed {
+                font-size: 1.5em; /* Mengurangi ukuran font untuk desktop */
+            }
+        }
+        /* Media query untuk ukuran mobile */
+        @media only screen and (max-width: 767px) {
+            .container {
+                font-size: 2em;
+            }
+            #typed {
+                font-size: 1em;
+            }
+        }
+        /* Tautan ditekan */
+        .container a:active {
+            color: yellow;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body>
+    <video id="bgVideo" autoplay muted loop playsinline>
+        <source src="kembangapi.mp4" type="video/mp4">
+    </video>
+    <div id="date">🎉26/12/2024🎉</div>
+    <div class="container">
+        <span class="balloon">H</span>
+        <span class="balloon">A</span>
+        <span class="balloon">P</span>
+        <span class="balloon">P</span>
+        <span class="balloon">Y</span>
+    </div>
+    <div class="container">
+        <span id="typed-strings">
+            <p>NOOR SYAZWANI BINTI SUHAIMI</p>
+        </span>
+        <span class="balloon">B</span>
+        <span class="balloon">I</span>
+        <span class="balloon">R</span>
+        <span class="balloon">T</span>
+        <span class="balloon">H</span>
+        <span class="balloon">D</span>
+        <span class="balloon">A</span>
+        <span class="balloon">Y</span>
+    </div>
+    <div class="container">
+        <div id="typed-strings">
+            <p>🥳🥳🥳</p>
+        </div>
+        <span id="typed"></span>
+    </div>
+    <script>
+        var options = {
+            stringsElement: '#typed-strings',
+            typeSpeed: 50,
+            backSpeed: 50,
+            backDelay: 2000,
+            startDelay: 1000,
+            loop: true,
+        };
+        var typed = new Typed('#typed', options);
+
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + 'vw';
+            firework.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(firework);
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+        setInterval(createFirework, 500);
+
+        window.onload = function() {
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = "Happy Birthday Noor Syazwani binti Suhaimi";
+            msg.lang = 'ms-MY';
+
+            // Menunggu hingga suara tersedia
+            speechSynthesis.onvoiceschanged = function() {
+                var voices = speechSynthesis.getVoices();
+                msg.voice = voices.find(function(voice) {
+                    return voice.name === 'Google Bahasa Malaysia';
+                });
+
+                window.speechSynthesis.speak(msg);
+            };
+        }
+    </script>
+</body>
+</html>
